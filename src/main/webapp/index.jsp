@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JSP - Hello World</title>
+  <title>JSP - Welcome to </title>
 </head>
 <body>
 <h1><%= "Hello World!" %></h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+
+<a href="${pageContext.request.contextPath}/plane">Display All planes</a>
+<a href="${pageContext.request.contextPath}/planetype">Display All Plane types</a>
 </body>
 </html>

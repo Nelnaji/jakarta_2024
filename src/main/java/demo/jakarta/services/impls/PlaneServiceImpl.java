@@ -9,10 +9,11 @@ import java.util.List;
 
 public class PlaneServiceImpl implements PlaneService {
 
-@Inject
-private PlaneRepository planeRepository;
+    @Inject
+    private PlaneRepository planeRepository;
+
     @Override
     public List<Plane> getAll() {
-        return List.of();
+        return planeRepository.findAll();
     }
 }

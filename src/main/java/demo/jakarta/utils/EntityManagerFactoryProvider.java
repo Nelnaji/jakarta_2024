@@ -22,5 +22,4 @@ public class EntityManagerFactoryProvider {
             emf.close();
         }
     }
-
 }

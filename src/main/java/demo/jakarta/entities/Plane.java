@@ -1,7 +1,6 @@
 package demo.jakarta.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import org.hibernate.validator.constraints.Range;
 
 import java.util.Objects;
@@ -9,17 +8,31 @@ import java.util.Objects;
 @Entity
 public class Plane extends BaseEntity<Long> {
 
-    @Column(unique = true, nullable = false, length = 50)
+    @Column(unique=true,nullable = false,length = 50)
     private String plateNumber;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     @Range(min = 0)
     private int flyCount;
 
-    public Plane(){};
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Owner owner;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private PlaneType planeType;
+
+    public Plane(){}
+
     public Plane(String plateNumber, int flyCount) {
+        this();
         this.plateNumber = plateNumber;
         this.flyCount = flyCount;
+    }
+
+    public Plane(String plateNumber, int flyCount, Owner owner, PlaneType planeType) {
+        this(plateNumber, flyCount);
+        this.owner = owner;
+        this.planeType = planeType;
     }
 
     public String getPlateNumber() {

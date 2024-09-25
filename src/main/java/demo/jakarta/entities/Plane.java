@@ -13,7 +13,7 @@ public class Plane extends BaseEntity<Long> {
 
     @Column(nullable = false)
     @Range(min = 0)
-    private int flyCount;
+    private int flightNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Owner owner;
@@ -21,16 +21,20 @@ public class Plane extends BaseEntity<Long> {
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private PlaneType planeType;
 
+    @Column(nullable = true)
+    @Range(min = 0)
+    private int flightHours;
+
     public Plane(){}
 
-    public Plane(String plateNumber, int flyCount) {
+    public Plane(String plateNumber, int flightNumber) {
         this();
         this.plateNumber = plateNumber;
-        this.flyCount = flyCount;
+        this.flightNumber = flightNumber;
     }
 
-    public Plane(String plateNumber, int flyCount, Owner owner, PlaneType planeType) {
-        this(plateNumber, flyCount);
+    public Plane(String plateNumber, int flightNumber, Owner owner, PlaneType planeType) {
+        this(plateNumber, flightNumber);
         this.owner = owner;
         this.planeType = planeType;
     }
@@ -45,33 +49,39 @@ public class Plane extends BaseEntity<Long> {
 
     @Range(min = 0)
     public int getFlyCount() {
-        return flyCount;
+        return flightNumber;
     }
 
-    public void setFlyCount(@Range(min = 0) int flyCount) {
-        this.flyCount = flyCount;
-    }
-
-    @Override
-    public String toString() {
-        return "Plane{" +
-                "plateNumber='" + plateNumber + '\'' +
-                ", flyCount=" + flyCount +
-                '}';
+    public void setFlyCount(@Range(min = 0) int flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Plane plane = (Plane) o;
-        return flyCount == plane.flyCount && Objects.equals(plateNumber, plane.plateNumber);
+        return flightNumber == plane.flightNumber && flightHours == plane.flightHours && Objects.equals(plateNumber, plane.plateNumber) && Objects.equals(owner, plane.owner) && Objects.equals(planeType, plane.planeType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(plateNumber, flyCount);
+        return Objects.hash(super.hashCode(), plateNumber, flightNumber, owner, planeType, flightHours);
+    }
+
+    @Override
+    public String
+    toString() {
+        return "Plane{" +
+                "plateNumber='" + plateNumber + '\'' +
+                ", flightNumber=" + flightNumber +
+                ", owner=" + owner +
+                ", planeType=" + planeType +
+                ", flightHours=" + flightHours +
+                '}';
     }
 }
+
 
 

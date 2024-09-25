@@ -5,23 +5,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
-import org.hibernate.validator.constraints.Range;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-public class Maintenance  extends BaseEntity<Long> {
+public class Maintenance extends Operation {
 
     @Column(nullable = false)
     private String description;
-
-    @Column(nullable = false)
-    private LocalDateTime actualDate;
-
-    @Column
-    @Range(min = 0)
-    private int duration;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Plane plane;
@@ -36,15 +27,13 @@ public class Maintenance  extends BaseEntity<Long> {
         super();
     }
 
-    public Maintenance(String description, LocalDateTime actualDate, int duration) {
+    public Maintenance(String description ) {
         this();
         this.description = description;
-        this.actualDate = actualDate;
-        this.duration = duration;
     }
 
-    public Maintenance(String description, LocalDateTime actualDate, int duration, Plane plane, Mechanic repairer, Mechanic inspector) {
-        this(description, actualDate, duration);
+    public Maintenance(String description, Plane plane, Mechanic repairer, Mechanic inspector) {
+        this(description);
         this.plane = plane;
         this.repairer = repairer;
         this.inspector = inspector;
@@ -58,21 +47,6 @@ public class Maintenance  extends BaseEntity<Long> {
         this.description = description;
     }
 
-    public LocalDateTime getActualDate() {
-        return actualDate;
-    }
-
-    public void setActualDate(LocalDateTime actualDate) {
-        this.actualDate = actualDate;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
 
     public Plane getPlane() {
         return plane;
@@ -103,8 +77,6 @@ public class Maintenance  extends BaseEntity<Long> {
         return  super.toString() + " " +
                 "Maintenance{" +
                 "description='" + description + '\'' +
-                ", actualDate=" + actualDate +
-                ", duration=" + duration +
                 ", plane=" + plane +
                 ", repairer=" + repairer +
                 ", inspector=" + inspector +
@@ -118,11 +90,12 @@ public class Maintenance  extends BaseEntity<Long> {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Maintenance that = (Maintenance) o;
-        return duration == that.duration && Objects.equals(description, that.description) && Objects.equals(actualDate, that.actualDate) && Objects.equals(plane, that.plane) && Objects.equals(repairer, that.repairer) && Objects.equals(inspector, that.inspector);
+        return Objects.equals(description, that.description) && Objects.equals(plane, that.plane) && Objects.equals(repairer, that.repairer) && Objects.equals(inspector, that.inspector);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), description, actualDate, duration, plane, repairer, inspector);
+        return Objects.hash(super.hashCode(), description, plane, repairer, inspector);
     }
+
 }

@@ -20,6 +20,10 @@ public class PlaneType extends BaseEntity<Long> {
     @Range(min = 0)
     private int seatCount;
 
+
+
+
+
     public PlaneType(){}
 
     public PlaneType(String name, String manufacturer, double power, int seatCount) {

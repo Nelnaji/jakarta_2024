@@ -8,8 +8,8 @@
 <h1>Plane type index</h1>
 <ul>
      <c:forEach var="planety" items="${planeTypes}">
-        <li>${planety.name}</li>
-        <li>${planety.manufacturer}</li>
+        <li>Name : ${planety.name}</li>
+        <li>Manufacturer : ${planety.manufacturer}</li>
     </c:forEach>
 </ul>
 </body>

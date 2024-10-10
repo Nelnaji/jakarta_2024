@@ -10,6 +10,4 @@ public interface BaseRepository<TEntity, TId> {
     List<TEntity> findAll();
     void update(TEntity entity);
     void delete(TId id);
-
-
 }

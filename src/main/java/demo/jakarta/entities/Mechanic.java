@@ -16,8 +16,8 @@ public class Mechanic extends Person {
         this.habilitations = new HashSet<>();
     }
 
-    public Mechanic(String firstName, String lastName, String phoneNumber, Adresse adresse) {
-        super(firstName, lastName, phoneNumber, adresse);
+    public Mechanic(String firstName, String lastName, String phoneNumber, Address address) {
+        super(firstName, lastName, phoneNumber, address);
         this.habilitations = new HashSet<>();
     }
 

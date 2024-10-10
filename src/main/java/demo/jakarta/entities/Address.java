@@ -7,7 +7,7 @@ import jakarta.persistence.Embeddable;
 import java.util.Objects;
 
 @Embeddable
-public class Adresse {
+public class Address {
 
     @Column(nullable = false,length = 150)
     private String street;
@@ -16,9 +16,9 @@ public class Adresse {
     @Column(nullable = false,length = 150)
     private String state;
 
-    public Adresse() {}
+    public Address() {}
 
-    public Adresse(String street, String city, String state) {
+    public Address(String street, String city, String state) {
         this();
         this.street = street;
         this.city = city;
@@ -51,7 +51,7 @@ public class Adresse {
 
     @Override
     public String toString() {
-        return "Adresse{" +
+        return "Address{" +
                 "street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
@@ -64,8 +64,8 @@ public class Adresse {
                 
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Adresse adresse = (Adresse) o;
-        return Objects.equals(street, adresse.street) && Objects.equals(city, adresse.city) && Objects.equals(state, adresse.state);
+        Address address = (Address) o;
+        return Objects.equals(street, address.street) && Objects.equals(city, address.city) && Objects.equals(state, address.state);
     }
 
     @Override

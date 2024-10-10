@@ -18,4 +18,19 @@ public class PlaneServiceImpl implements PlaneService, Serializable {
     public List<Plane> getAll() {
         return planeRepository.findAll();
     }
+
+    @Override
+    public Plane create(Plane plane) {
+        return null;
+    }
+
+    @Override
+    public void update(Plane plane) {
+
+    }
+
+    @Override
+    public void delete(long id) {
+            planeRepository.delete(id);
+    }
 }

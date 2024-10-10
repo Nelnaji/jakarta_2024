@@ -7,8 +7,8 @@ public class Owner extends Person {
     public Owner() {
     }
 
-    public Owner(String firstName, String lastName, String phoneNumber, Adresse adresse) {
-        super(firstName, lastName, phoneNumber, adresse);
+    public Owner(String firstName, String lastName, String phoneNumber, Address address) {
+        super(firstName, lastName, phoneNumber, address);
     }
 
 

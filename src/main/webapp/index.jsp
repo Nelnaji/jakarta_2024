@@ -5,10 +5,10 @@
   <title>JSP - Welcome to </title>
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
+<h1><%= "Aeroport dashboard" %></h1>
 <br/>
 
-<a href="${pageContext.request.contextPath}/plane">Display All planes</a>
-<a href="${pageContext.request.contextPath}/planetype">Display All Plane types</a>
+<a href="${pageContext.request.contextPath}/plane">View All planes</a>
+<a href="${pageContext.request.contextPath}/planetype">View All Plane types</a>
 </body>
 </html>

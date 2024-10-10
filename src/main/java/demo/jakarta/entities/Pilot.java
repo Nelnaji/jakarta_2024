@@ -15,8 +15,8 @@ public class Pilot extends Person {
 
     public Pilot(){}
 
-    public Pilot(String firstName, String lastName, String phoneNumber, Adresse adresse, String licenseNumber) {
-        super(firstName, lastName, phoneNumber, adresse);
+    public Pilot(String firstName, String lastName, String phoneNumber, Address address, String licenseNumber) {
+        super(firstName, lastName, phoneNumber, address);
         this.licenseNumber = licenseNumber;
     }
 

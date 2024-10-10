@@ -9,14 +9,7 @@
 <ul>
     <jsp:useBean id="planes" scope="request" type="java.util.List"/>
     <c:forEach var="plane" items="${planes}">
-        <li>
-                ${plane.plateNumber}
-                    <form action="/plane" method="post">
-                        <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="planeId" value="${plane.id}">
-                        <button type="submit">Supprimer</button>
-                    </form>
-        </li>
+        <li>${plane.plateNumber}</li>
     </c:forEach>
 </ul>
 </body>
